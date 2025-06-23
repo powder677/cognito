@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Cognito - Close More Sales</title>
+   <title>Cognito - Your AI Sales Coach</title>
 
    <!-- Tailwind CSS -->
    <script src="https://cdn.tailwindcss.com"></script>
@@ -31,7 +31,7 @@
    </style>
 </head>
 
-<body class="bg-gray-50 flex items-center justify-center min-h-screen">
+<body class="bg-gray-50 flex items-center justify-center min-h-screen py-12">
 
    <div class="w-full max-w-2xl mx-auto p-6 md:p-8">
       <main id="main-content" class="bg-white rounded-xl shadow-lg transition-all">
@@ -46,32 +46,57 @@
             </div>
 
             <!-- Headline -->
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
-               Stop Losing Deals in Follow-Up. <span class="text-blue-600">Start Closing More Sales.</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+               That gut-wrenching feeling you blew the sales call?
             </h2>
-
-            <!-- Body Text -->
-            <p class="text-gray-600 text-lg mb-8 max-w-xl mx-auto">
-               You know your product inside and out, but how do you know if your sales conversations are costing you deals? Cognito is a personal AI coach that analyzes your prospect calls and meetings. It tells you exactly what to say in your follow-up to move deals forward and close more sales. We're launching a private beta for 50 sales professionals. Get your first 3 call analyses for free.
+            <!-- Sub-headline -->
+            <p class="text-gray-600 text-lg mb-10 max-w-xl mx-auto">
+               Cognito is your AI Sales Coach. It analyzes your calls, shows you what to fix, and writes the perfect follow-up email so you never lose a deal that way again.
             </p>
 
+            <!-- Bullet Points -->
+            <div class="max-w-md mx-auto text-left mb-10 bg-gray-50 p-6 rounded-lg">
+               <ul class="space-y-4">
+                  <li class="flex items-start">
+                     <svg class="h-6 w-6 text-blue-500 mr-3 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+                     </svg>
+                     <span class="text-gray-700"><strong class="font-semibold text-gray-900">Analyzes your calls,</strong> shows you what to fix, and writes the perfect follow-up email.</span>
+                  </li>
+                  <li class="flex items-start">
+                     <svg class="h-6 w-6 text-blue-500 mr-3 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                     </svg>
+                     <span class="text-gray-700">Get your first <strong class="font-semibold text-gray-900">1 call analysis for free</strong> when you join the private beta.</span>
+                  </li>
+               </ul>
+            </div>
+
             <!-- Signup Form -->
-            <!-- The action URL has been updated with your Formspree endpoint -->
             <form id="signup-form" class="w-full max-w-lg mx-auto" action="https://formspree.io/f/movwkjbv" method="POST">
                <label for="email" class="block text-md font-semibold text-gray-700 mb-3">
-                  Enter Your Email to Request Your Invite.
+                  Enter Your Email to Claim Your Free Analysis.
                </label>
                <div class="flex flex-col sm:flex-row gap-3">
                   <input type="email" id="email" name="email" required placeholder="you@example.com" class="form-input-custom w-full px-4 py-3 text-lg text-gray-900 bg-gray-100 border-2 border-transparent rounded-lg focus:bg-white transition-all duration-300">
                   <button type="submit" id="submit-button" class="w-full sm:w-auto bg-blue-600 text-white font-bold text-lg px-8 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 whitespace-nowrap">
-                     Get Free Access
+                     Request My 1 Free Analysis
                   </button>
                </div>
             </form>
 
             <!-- Error Message -->
-            <div id="error-message" class="hidden mt-4 text-sm text-red-600 bg-red-100 p-3 rounded-lg">
-               <!-- Error text will be inserted here by JavaScript -->
+            <div id="error-message" class="hidden mt-4 text-sm text-red-600 bg-red-100 p-3 rounded-lg"></div>
+         </div>
+
+         <!-- From the Founder Section -->
+         <div class="bg-gray-100/70 p-8 md:p-10 rounded-b-xl border-t border-gray-200">
+            <div class="max-w-md mx-auto text-center">
+               <h3 class="font-bold text-gray-800 text-lg mb-3">From the Founder</h3>
+               <p class="text-gray-600 italic leading-relaxed">
+                  "I built Cognito because I'm a consultant who learned to code, and I was tired of losing clients due to sloppy sales calls. I needed a coach, but couldn't afford one. This is the tool I wish I had from day one. My goal is to help other solo entrepreneurs win the deals they deserve."
+               </p>
+               <p class="text-gray-700 font-semibold mt-4">- James Pulzar</p>
             </div>
          </div>
       </main>
@@ -88,7 +113,7 @@
          <p class="text-gray-500 text-md">We'll be in touch soon with details about the private beta.</p>
       </div>
 
-      <footer class="text-center mt-6">
+      <footer class="text-center mt-8">
          <p class="text-gray-500 text-sm">© 2025 Cognito. All rights reserved.</p>
       </footer>
    </div>
@@ -99,10 +124,8 @@
       form.addEventListener("submit", handleSignup);
 
       async function handleSignup(event) {
-         // Prevent the default form submission (which would redirect the page)
          event.preventDefault();
 
-         // Get all the necessary DOM elements
          const emailInput = document.getElementById('email');
          const submitButton = document.getElementById('submit-button');
          const mainContent = document.getElementById('main-content');
@@ -110,16 +133,13 @@
          const submittedEmailSpan = document.getElementById('submitted-email');
          const errorMessageDiv = document.getElementById('error-message');
 
-         // Prepare form data for submission
          const data = new FormData(event.target);
 
-         // Disable button and show loading spinner
          submitButton.disabled = true;
          submitButton.innerHTML = `<svg class="animate-spin h-5 w-5 text-white mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
-         errorMessageDiv.classList.add('hidden'); // Hide previous errors
+         errorMessageDiv.classList.add('hidden');
 
          try {
-            // Asynchronously submit the form data to Formspree
             const response = await fetch(event.target.action, {
                method: form.method,
                body: data,
@@ -128,28 +148,23 @@
                }
             });
 
-            // Check if the submission was successful
             if (response.ok) {
-               // Show the success message
                submittedEmailSpan.textContent = emailInput.value;
                mainContent.classList.add('hidden');
                successMessage.classList.remove('hidden');
                form.reset();
             } else {
-               // Handle server-side errors from Formspree
                const errorData = await response.json();
                const errorText = errorData.errors ? errorData.errors.map(e => e.message).join(', ') : 'An unknown error occurred.';
                errorMessageDiv.textContent = `Oops! ${errorText}`;
                errorMessageDiv.classList.remove('hidden');
             }
          } catch (error) {
-            // Handle network errors (e.g., user is offline)
             errorMessageDiv.textContent = 'Oops! A network error occurred. Please check your connection and try again.';
             errorMessageDiv.classList.remove('hidden');
          } finally {
-            // Re-enable the button and restore its text, regardless of outcome
             submitButton.disabled = false;
-            submitButton.textContent = 'Get Free Access';
+            submitButton.textContent = 'Request My 1 Free Analysis';
          }
       }
    </script>
