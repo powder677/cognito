@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Cognito - Close More Sales</title>
+
+   <!-- Tailwind CSS -->
+   <script src="https://cdn.tailwindcss.com"></script>
+
+   <!-- Google Fonts: Inter -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+   <style>
+      /* Use the Inter font family */
+      body {
+         font-family: 'Inter', sans-serif;
+      }
+
+      /* Custom focus styles for better accessibility and design */
+      .form-input-custom:focus {
+         outline: none;
+         box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.4);
+         /* blue-300 with opacity */
+         border-color: #60a5fa;
+         /* blue-400 */
+      }
+   </style>
+</head>
+
+<body class="bg-gray-50 flex items-center justify-center min-h-screen">
+
+   <div class="w-full max-w-2xl mx-auto p-6 md:p-8">
+      <main id="main-content" class="bg-white rounded-xl shadow-lg transition-all">
+         <div class="p-8 md:p-12 text-center">
+
+            <!-- Logo Placeholder -->
+            <div class="mb-8">
+               <svg class="mx-auto h-12 w-auto text-blue-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M12.516 2.17a.75.75 0 00-1.032 0L3.372 9.344a.75.75 0 00.516 1.33h16.224a.75.75 0 00.516-1.33L12.516 2.17zM3.92 12.522a.75.75 0 01-.257-1.026l.004-.005L11.5 2.697a.75.75 0 011 0l7.833 8.794.004.005a.75.75 0 01-.257 1.026H3.92zM21 14.25a.75.75 0 00-1.5 0v3.313l-6.72-6.72a.75.75 0 00-1.06 0l-6.72 6.72V14.25a.75.75 0 00-1.5 0v4.5c0 .414.336.75.75.75h16.5a.75.75 0 00.75-.75v-4.5z" clip-rule="evenodd" />
+               </svg>
+               <h1 class="text-gray-900 text-2xl font-bold mt-2">Cognito</h1>
+            </div>
+
+            <!-- Headline -->
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+               Stop Losing Deals in Follow-Up. <span class="text-blue-600">Start Closing More Sales.</span>
+            </h2>
+
+            <!-- Body Text -->
+            <p class="text-gray-600 text-lg mb-8 max-w-xl mx-auto">
+               You know your product inside and out, but how do you know if your sales conversations are costing you deals? Cognito is a personal AI coach that analyzes your prospect calls and meetings. It tells you exactly what to say in your follow-up to move deals forward and close more sales. We're launching a private beta for 50 sales professionals. Get your first 3 call analyses for free.
+            </p>
+
+            <!-- Signup Form -->
+            <!-- The action URL has been updated with your Formspree endpoint -->
+            <form id="signup-form" class="w-full max-w-lg mx-auto" action="https://formspree.io/f/movwkjbv" method="POST">
+               <label for="email" class="block text-md font-semibold text-gray-700 mb-3">
+                  Enter Your Email to Request Your Invite.
+               </label>
+               <div class="flex flex-col sm:flex-row gap-3">
+                  <input type="email" id="email" name="email" required placeholder="you@example.com" class="form-input-custom w-full px-4 py-3 text-lg text-gray-900 bg-gray-100 border-2 border-transparent rounded-lg focus:bg-white transition-all duration-300">
+                  <button type="submit" id="submit-button" class="w-full sm:w-auto bg-blue-600 text-white font-bold text-lg px-8 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 whitespace-nowrap">
+                     Get Free Access
+                  </button>
+               </div>
+            </form>
+
+            <!-- Error Message -->
+            <div id="error-message" class="hidden mt-4 text-sm text-red-600 bg-red-100 p-3 rounded-lg">
+               <!-- Error text will be inserted here by JavaScript -->
+            </div>
+         </div>
+      </main>
+
+      <!-- Success Message -->
+      <div id="success-message" class="hidden text-center p-8 md:p-12 bg-white rounded-xl shadow-lg transition-all">
+         <div class="mb-6">
+            <svg class="mx-auto h-16 w-16 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+         </div>
+         <h2 class="text-3xl font-bold text-gray-900 mb-3">You're on the list!</h2>
+         <p class="text-gray-600 text-lg mb-2">Thank you for requesting an invite. We've received your email <strong id="submitted-email"></strong>.</p>
+         <p class="text-gray-500 text-md">We'll be in touch soon with details about the private beta.</p>
+      </div>
+
+      <footer class="text-center mt-6">
+         <p class="text-gray-500 text-sm">© 2025 Cognito. All rights reserved.</p>
+      </footer>
+   </div>
+
+   <script>
+      // --- Form Submission Logic using Fetch for AJAX ---
+      const form = document.getElementById('signup-form');
+      form.addEventListener("submit", handleSignup);
+
+      async function handleSignup(event) {
+         // Prevent the default form submission (which would redirect the page)
+         event.preventDefault();
+
+         // Get all the necessary DOM elements
+         const emailInput = document.getElementById('email');
+         const submitButton = document.getElementById('submit-button');
+         const mainContent = document.getElementById('main-content');
+         const successMessage = document.getElementById('success-message');
+         const submittedEmailSpan = document.getElementById('submitted-email');
+         const errorMessageDiv = document.getElementById('error-message');
+
+         // Prepare form data for submission
+         const data = new FormData(event.target);
+
+         // Disable button and show loading spinner
+         submitButton.disabled = true;
+         submitButton.innerHTML = `<svg class="animate-spin h-5 w-5 text-white mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
+         errorMessageDiv.classList.add('hidden'); // Hide previous errors
+
+         try {
+            // Asynchronously submit the form data to Formspree
+            const response = await fetch(event.target.action, {
+               method: form.method,
+               body: data,
+               headers: {
+                  'Accept': 'application/json'
+               }
+            });
+
+            // Check if the submission was successful
+            if (response.ok) {
+               // Show the success message
+               submittedEmailSpan.textContent = emailInput.value;
+               mainContent.classList.add('hidden');
+               successMessage.classList.remove('hidden');
+               form.reset();
+            } else {
+               // Handle server-side errors from Formspree
+               const errorData = await response.json();
+               const errorText = errorData.errors ? errorData.errors.map(e => e.message).join(', ') : 'An unknown error occurred.';
+               errorMessageDiv.textContent = `Oops! ${errorText}`;
+               errorMessageDiv.classList.remove('hidden');
+            }
+         } catch (error) {
+            // Handle network errors (e.g., user is offline)
+            errorMessageDiv.textContent = 'Oops! A network error occurred. Please check your connection and try again.';
+            errorMessageDiv.classList.remove('hidden');
+         } finally {
+            // Re-enable the button and restore its text, regardless of outcome
+            submitButton.disabled = false;
+            submitButton.textContent = 'Get Free Access';
+         }
+      }
+   </script>
+
+</body>
+
+</html>
