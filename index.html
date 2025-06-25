@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Cognito - Your AI Sales Coach</title>
+   <title>Cognito Performance Coaching</title>
 
    <!-- Tailwind CSS -->
    <script src="https://cdn.tailwindcss.com"></script>
@@ -12,161 +12,392 @@
    <!-- Google Fonts: Inter -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+   <!-- AlpineJS for tabs -->
+   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
    <style>
-      /* Use the Inter font family */
+      /* Custom styles to complement Tailwind */
       body {
          font-family: 'Inter', sans-serif;
+         background-color: #f8fafc;
+         /* A very light gray background */
       }
 
-      /* Custom focus styles for better accessibility and design */
-      .form-input-custom:focus {
-         outline: none;
-         box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.4);
-         /* blue-300 with opacity */
-         border-color: #60a5fa;
-         /* blue-400 */
+      .bg-hero {
+         background-image: linear-gradient(rgba(5, 10, 25, 0.8), rgba(5, 10, 25, 0.8)), url('https://placehold.co/1920x1080/0a0a0a/333333?text=Modern+Dealership');
+         background-size: cover;
+         background-position: center;
       }
+
+      .accent-gold {
+         background-color: #D9A036;
+         /* A rich, confident gold */
+      }
+
+      .accent-gold-text {
+         color: #D9A036;
+      }
+
+      .hover\:accent-gold-darker:hover {
+         background-color: #b4852d;
+      }
+
+      .section-padding {
+         padding: 4rem 1.5rem;
+      }
+
+      @media (min-width: 768px) {
+         .section-padding {
+            padding: 6rem 2rem;
+         }
+      }
+
+      .gradient-text {
+         background: linear-gradient(90deg, #D9A036, #F5D06A);
+         -webkit-background-clip: text;
+         -webkit-text-fill-color: transparent;
+      }
+
+      /* Styles for the new tabbed component */
+      .tab-button.active {
+         border-bottom-color: #D9A036;
+         color: #D9A036;
+      }
+
+      /* Style for the report content */
+      .report-content h4 {
+         font-size: 1.25rem;
+         font-weight: 700;
+         margin-top: 2rem;
+         margin-bottom: 0.75rem;
+      }
+
+      .report-content h4.brutal {
+         color: #f87171;
+      }
+
+      /* red-400 */
+      .report-content h4.professional {
+         color: #3b82f6;
+      }
+
+      /* blue-500 */
    </style>
 </head>
 
-<body class="bg-gray-50 flex items-center justify-center min-h-screen py-12">
+<body class="text-gray-800">
 
-   <div class="w-full max-w-2xl mx-auto p-6 md:p-8">
-      <main id="main-content" class="bg-white rounded-xl shadow-lg transition-all">
-         <div class="p-8 md:p-12 text-center">
-
-            <!-- Logo Placeholder -->
-            <div class="mb-8">
-               <svg class="mx-auto h-12 w-auto text-blue-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M12.516 2.17a.75.75 0 00-1.032 0L3.372 9.344a.75.75 0 00.516 1.33h16.224a.75.75 0 00.516-1.33L12.516 2.17zM3.92 12.522a.75.75 0 01-.257-1.026l.004-.005L11.5 2.697a.75.75 0 011 0l7.833 8.794.004.005a.75.75 0 01-.257 1.026H3.92zM21 14.25a.75.75 0 00-1.5 0v3.313l-6.72-6.72a.75.75 0 00-1.06 0l-6.72 6.72V14.25a.75.75 0 00-1.5 0v4.5c0 .414.336.75.75.75h16.5a.75.75 0 00.75-.75v-4.5z" clip-rule="evenodd" />
-               </svg>
-               <h1 class="text-gray-900 text-2xl font-bold mt-2">Cognito</h1>
-            </div>
-
-            <!-- Headline -->
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3 leading-tight">
-               That gut-wrenching feeling you blew the sales call?
-            </h2>
-            <!-- Sub-headline -->
-            <p class="text-gray-600 text-lg mb-10 max-w-xl mx-auto">
-               Cognito is your AI Sales Coach. It analyzes your calls, shows you what to fix, and writes the perfect follow-up email so you never lose a deal that way again.
-            </p>
-
-            <!-- Bullet Points -->
-            <div class="max-w-md mx-auto text-left mb-10 bg-gray-50 p-6 rounded-lg">
-               <ul class="space-y-4">
-                  <li class="flex items-start">
-                     <svg class="h-6 w-6 text-blue-500 mr-3 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
-                     </svg>
-                     <span class="text-gray-700"><strong class="font-semibold text-gray-900">Analyzes your calls,</strong> shows you what to fix, and writes the perfect follow-up email.</span>
-                  </li>
-                  <li class="flex items-start">
-                     <svg class="h-6 w-6 text-blue-500 mr-3 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                     </svg>
-                     <span class="text-gray-700">Get your first <strong class="font-semibold text-gray-900">1 call analysis for free</strong> when you join the private beta.</span>
-                  </li>
-               </ul>
-            </div>
-
-            <!-- Signup Form -->
-            <form id="signup-form" class="w-full max-w-lg mx-auto" action="https://formspree.io/f/movwkjbv" method="POST">
-               <label for="email" class="block text-md font-semibold text-gray-700 mb-3">
-                  Enter Your Email to Claim Your Free Analysis.
-               </label>
-               <div class="flex flex-col sm:flex-row gap-3">
-                  <input type="email" id="email" name="email" required placeholder="you@example.com" class="form-input-custom w-full px-4 py-3 text-lg text-gray-900 bg-gray-100 border-2 border-transparent rounded-lg focus:bg-white transition-all duration-300">
-                  <button type="submit" id="submit-button" class="w-full sm:w-auto bg-blue-600 text-white font-bold text-lg px-8 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 whitespace-nowrap">
-                     Request My 1 Free Analysis
-                  </button>
-               </div>
-            </form>
-
-            <!-- Error Message -->
-            <div id="error-message" class="hidden mt-4 text-sm text-red-600 bg-red-100 p-3 rounded-lg"></div>
-         </div>
-
-         <!-- From the Founder Section -->
-         <div class="bg-gray-100/70 p-8 md:p-10 rounded-b-xl border-t border-gray-200">
-            <div class="max-w-md mx-auto text-center">
-               <h3 class="font-bold text-gray-800 text-lg mb-3">From the Founder</h3>
-               <p class="text-gray-600 italic leading-relaxed">
-                  "I built Cognito because I'm a consultant who learned to code, and I was tired of losing clients due to sloppy sales calls. I needed a coach, but couldn't afford one. This is the tool I wish I had from day one. My goal is to help other solo entrepreneurs win the deals they deserve."
-               </p>
-               <p class="text-gray-700 font-semibold mt-4">- James Pulzar</p>
-            </div>
-         </div>
-      </main>
-
-      <!-- Success Message -->
-      <div id="success-message" class="hidden text-center p-8 md:p-12 bg-white rounded-xl shadow-lg transition-all">
-         <div class="mb-6">
-            <svg class="mx-auto h-16 w-16 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+   <!-- Header & Navigation -->
+   <header class="bg-gray-900/90 backdrop-blur-md text-white sticky top-0 z-50 shadow-lg">
+      <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+         <a href="#" class="text-2xl font-bold tracking-wider">COGNITO</a>
+         <nav class="hidden md:flex items-center space-x-8">
+            <a href="#how-it-works" class="hover:accent-gold-text transition duration-300">How It Works</a>
+            <a href="#dual-coaching" class="hover:accent-gold-text transition duration-300">Coaching Examples</a>
+            <a href="#pricing" class="hover:accent-gold-text transition duration-300">Pricing</a>
+         </nav>
+         <a href="https://buy.stripe.com/00w6oGa8ldaoe4nbCRbbG03" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block accent-gold text-gray-900 font-bold py-2 px-5 rounded-lg shadow-md hover:accent-gold-darker transition duration-300 transform hover:scale-105">
+            Start Your First 2 Shops
+         </a>
+         <!-- Mobile Menu Button -->
+         <button id="mobile-menu-button" class="md:hidden p-2 rounded-md hover:bg-gray-700 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
             </svg>
-         </div>
-         <h2 class="text-3xl font-bold text-gray-900 mb-3">You're on the list!</h2>
-         <p class="text-gray-600 text-lg mb-2">Thank you for requesting an invite. We've received your email <strong id="submitted-email"></strong>.</p>
-         <p class="text-gray-500 text-md">We'll be in touch soon with details about the private beta.</p>
+         </button>
       </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-3">
+         <a href="#how-it-works" class="block hover:accent-gold-text transition duration-300">How It Works</a>
+         <a href="#dual-coaching" class="block hover:accent-gold-text transition duration-300">Coaching Examples</a>
+         <a href="#pricing" class="block hover:accent-gold-text transition duration-300">Pricing</a>
+         <a href="https://buy.stripe.com/00w6oGa8ldaoe4nbCRbbG03" target="_blank" rel="noopener noreferrer" class="block mt-4 w-full text-center accent-gold text-gray-900 font-bold py-3 px-5 rounded-lg shadow-md hover:accent-gold-darker transition duration-300">
+            Start for $249
+         </a>
+      </div>
+   </header>
 
-      <footer class="text-center mt-8">
-         <p class="text-gray-500 text-sm">© 2025 Cognito. All rights reserved.</p>
-      </footer>
-   </div>
+   <!-- Hero Section -->
+   <section class="bg-hero text-white text-center section-padding">
+      <div class="container mx-auto">
+         <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Find Out What Your Sales Team <span class="gradient-text">Really</span> Says on the Phone.</h1>
+         <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-300 mb-8">
+            We mystery shop your team with callers who challenge your reps just like real buyers. You get two distinct coaching reports—Brutal and Professional—to sharpen their competitive edge.
+         </p>
+         <a href="https://buy.stripe.com/00w6oGa8ldaoe4nbCRbbG03" target="_blank" rel="noopener noreferrer" class="accent-gold text-gray-900 font-bold py-4 px-8 rounded-lg shadow-xl hover:accent-gold-darker transition duration-300 transform hover:scale-105 text-lg">
+            Start Your First 2 Shops for $249
+         </a>
+      </div>
+   </section>
+
+   <!-- The Problem / Blind Spot Section -->
+   <section class="bg-white section-padding">
+      <div class="container mx-auto text-center max-w-4xl">
+         <h2 class="text-3xl md:text-4xl font-bold mb-4">Your Competition is One Bad Sales Call Away From Stealing Your Customer.</h2>
+         <p class="text-lg text-gray-600 mb-6">
+            You can't listen to every call. You trust your team is on their game, but costly habits and missed opportunities are silent revenue killers. Top performers get complacent and developing reps need more than just encouragement.
+         </p>
+         <p class="text-xl font-semibold text-gray-800">
+            You don't have a training problem. You have a blind spot. Cognito gives you the monthly diagnostic you need to stay ahead.
+         </p>
+      </div>
+   </section>
+
+   <!-- How It Works Section -->
+   <section id="how-it-works" class="section-padding bg-gray-50">
+      <div class="container mx-auto">
+         <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-3">Three Steps to a Sharper Sales Floor</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">A simple, powerful process to uncover actionable insights.</p>
+         </div>
+         <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+            <!-- Step 1 -->
+            <div class="text-center p-6 bg-white rounded-xl shadow-md">
+               <div class="inline-block p-4 mb-4 bg-gray-900 rounded-full">
+                  <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                  </svg>
+               </div>
+               <h3 class="text-xl font-bold mb-2">1. Strategic Mystery Shops</h3>
+               <p class="text-gray-600">Our callers don't follow a rigid script. They engage your reps with realistic vehicle questions, negotiations, and the same pushback your team faces daily.</p>
+            </div>
+            <!-- Step 2 -->
+            <div class="text-center p-6 bg-white rounded-xl shadow-md">
+               <div class="inline-block p-4 mb-4 bg-gray-900 rounded-full">
+                  <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+               </div>
+               <h3 class="text-xl font-bold mb-2">2. Dual Coaching Analysis</h3>
+               <p class="text-gray-600">The Cognito difference. Every call is reviewed twice, delivering two separate reports, each with a different, powerful coaching philosophy.</p>
+            </div>
+            <!-- Step 3 -->
+            <div class="text-center p-6 bg-white rounded-xl shadow-md">
+               <div class="inline-block p-4 mb-4 bg-gray-900 rounded-full">
+                  <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                  </svg>
+               </div>
+               <h3 class="text-xl font-bold mb-2">3. Actionable Performance Reports</h3>
+               <p class="text-gray-600">You receive four clear, concise reports each month. No fluff or buzzwords. Just actionable insights to make your team better, starting today.</p>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <!-- NEW Coaching Examples Section -->
+   <section id="dual-coaching" class="section-padding bg-white">
+      <div class="container mx-auto">
+         <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-3">See the Difference: Coaching in Action</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">One sales call. Two entirely different coaching reports. See how we diagnose performance for every type of salesperson on your team.</p>
+         </div>
+
+         <div x-data="{ tab: 'brutal' }" class="max-w-6xl mx-auto">
+            <!-- Tab Buttons -->
+            <div class="border-b border-gray-200 mb-8">
+               <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                  <button @click="tab = 'brutal'" :class="{ 'active': tab === 'brutal' }" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-lg border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                     Brutal Mode
+                  </button>
+                  <button @click="tab = 'professional'" :class="{ 'active': tab === 'professional' }" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-lg border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                     Professional Mode
+                  </button>
+               </nav>
+            </div>
+
+            <!-- Tab Content -->
+            <div>
+               <!-- Brutal Mode Content -->
+               <div x-show="tab === 'brutal'" class="report-content bg-gray-800 text-white p-6 sm:p-8 rounded-lg shadow-2xl">
+                  <h3 class="text-3xl font-bold text-red-400 mb-4">Brutal Mode Report: Dave</h3>
+                  <p class="text-gray-300 mb-6">"Listen up, Dave. You just spent 9 minutes on the phone and accomplished nothing. You were polite, you were helpful, and you completely failed to sell a car. You acted like a friendly switchboard operator, not a killer closer."</p>
+
+                  <h4 class="brutal">Performance Scorecard</h4>
+                  <div class="overflow-x-auto mb-6">
+                     <table class="w-full text-left">
+                        <thead class="bg-gray-700">
+                           <tr>
+                              <th class="p-3">Metric</th>
+                              <th class="p-3">Rating</th>
+                              <th class="p-3">Cognito's Analysis</th>
+                           </tr>
+                        </thead>
+                        <tbody class="bg-gray-800">
+                           <tr class="border-b border-gray-700">
+                              <td class="p-3 font-semibold">Overall Grade</td>
+                              <td class="p-3 text-red-400 font-bold">F</td>
+                              <td class="p-3">You failed at every critical sales function.</td>
+                           </tr>
+                           <tr class="border-b border-gray-700">
+                              <td class="p-3 font-semibold">Call Control</td>
+                              <td class="p-3">2/10</td>
+                              <td class="p-3">The customer led this entire dance.</td>
+                           </tr>
+                           <tr class="border-b border-gray-700">
+                              <td class="p-3 font-semibold">Closing Ability</td>
+                              <td class="p-3">0/10</td>
+                              <td class="p-3">Not a single attempt to close. Fireable offense.</td>
+                           </tr>
+                           <tr class="border-b border-gray-700">
+                              <td class="p-3 font-semibold">Objection Handling</td>
+                              <td class="p-3">1/10</td>
+                              <td class="p-3">You acknowledged objections and then immediately folded.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+
+                  <h4 class="brutal">The Killing Moment</h4>
+                  <blockquote class="border-l-4 border-red-400 pl-4 text-gray-300 italic mb-6">"The instant you lost the war was when the AI said, 'Yeesh. That’s a bit higher than I was expecting,' and your response was, 'What kind of budget were you hoping to stay within?' You validated their price fear, made the entire conversation about money, and had ZERO value built to defend the price. It was tactical suicide."</blockquote>
+
+                  <h4 class="brutal">The Elite Replacement</h4>
+                  <div class="bg-gray-900 p-4 rounded-md">
+                     <p><strong class="text-gray-400">YOUR (WEAK) RESPONSE:</strong> "What kind of budget were you hoping to stay within?"</p>
+                     <p class="mt-2"><strong class="text-green-400">THE ELITE REPLACEMENT:</strong> "I hear you. It's a premium vehicle and that number can be surprising. Let's put the price on the shelf for just a second. Based on what you mentioned about the cabin, does this Highlander... feel like the right car for you?"</p>
+                  </div>
+               </div>
+
+               <!-- Professional Mode Content -->
+               <div x-show="tab === 'professional'" class="report-content bg-gray-100 text-gray-800 p-6 sm:p-8 rounded-lg shadow-2xl">
+                  <h3 class="text-3xl font-bold text-blue-600 mb-4">Professional Mode Report: Dave</h3>
+
+                  <h4 class="professional">Performance Development Scorecard</h4>
+                  <div class="overflow-x-auto mb-6">
+                     <table class="w-full text-left">
+                        <thead class="bg-gray-200">
+                           <tr>
+                              <th class="p-3 font-semibold">Area of Focus</th>
+                              <th class="p-3 font-semibold">Rating</th>
+                              <th class="p-3 font-semibold">Development Notes</th>
+                           </tr>
+                        </thead>
+                        <tbody class="bg-white">
+                           <tr class="border-b border-gray-200">
+                              <td class="p-3">Call Leadership</td>
+                              <td class="p-3">6/10</td>
+                              <td class="p-3">Demonstrated excellent patience but followed the customer's lead. Opportunity to guide the conversation more deliberately.</td>
+                           </tr>
+                           <tr class="border-b border-gray-200">
+                              <td class="p-3">Product Expertise</td>
+                              <td class="p-3">8/10</td>
+                              <td class="p-3">Solid foundational knowledge. To elevate, connect features to lifestyle benefits based on discovery.</td>
+                           </tr>
+                           <tr class="border-b border-gray-200">
+                              <td class="p-3">Challenge Management</td>
+                              <td class="p-3">9/10</td>
+                              <td class="p-3">A clear strength. Handled skepticism with exceptional professionalism. Next level is to leverage objections as discovery opportunities.</td>
+                           </tr>
+                           <tr class="border-b border-gray-200">
+                              <td class="p-3">Value Creation</td>
+                              <td class="p-3">5/10</td>
+                              <td class="p-3">Value was communicated through facts. Opportunity to build emotional value by connecting solutions to the customer's needs.</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+
+                  <h4 class="professional">Performance Insights</h4>
+                  <p class="text-gray-600 mb-4">Dave, this was a professionally handled call that showcases genuine trust-building. Your calm, no-pressure demeanor was your greatest asset. The primary development opportunity is to shift from a reactive, informative stance to a proactive, consultative role. You answered questions well, but rarely took control to ask the deeper, strategic questions needed to uncover true buying motives.</p>
+
+                  <h4 class="professional">Strategic Development Recommendations</h4>
+                  <ul class="list-disc list-outside space-y-2 pl-5 text-gray-600">
+                     <li><strong>Master "The Layered Question":</strong> Instead of accepting surface-level answers, use follow-up questions to dig deeper and understand the 'why' behind the 'what'.</li>
+                     <li><strong>Build a "Value Bridge" Before Price:</strong> Never present the price until you have built a bridge of value to support it. Reframe price as the cost of a solution.</li>
+                     <li><strong>Employ the "Problem/Solution" Appointment Close:</strong> Frame the in-person appointment as the most efficient way to solve the customer's complex questions.</li>
+                  </ul>
+
+                  <h4 class="professional">Conversation Enhancement Examples</h4>
+                  <div class="bg-blue-50 p-6 rounded-md">
+                     <p class="font-semibold">Scenario: The Price Objection</p>
+                     <blockquote class="border-l-4 border-blue-500 pl-4 text-gray-600 italic my-2">"I understand. That number in a vacuum can seem high. Based on what you mentioned about trips to the mountains and wanting something reliable, many clients find that the value of Toyota's safety and the capability of AWD provides long-term peace of mind that's worth the investment..."</blockquote>
+                     <p class="text-sm"><strong>Strategic Improvement:</strong> This validates the feeling, immediately reinforces the value proposition, and then seeks to isolate the specific objection to keep the conversation moving.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <!-- Pricing Section -->
+   <section id="pricing" class="section-padding bg-gray-50">
+      <div class="container mx-auto max-w-2xl">
+         <div class="bg-white rounded-xl shadow-2xl p-8 md:p-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-3">Your Monthly Performance Edge.</h2>
+            <p class="text-lg text-gray-600 mb-6">One simple, high-impact plan. No complexity.</p>
+            <div class="mb-8">
+               <span class="text-5xl font-extrabold">$249</span>
+               <span class="text-lg text-gray-500">/month</span>
+            </div>
+            <ul class="space-y-4 text-left mb-10 inline-block">
+               <li class="flex items-center"><svg class="w-6 h-6 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>2 Strategic Mystery Shops</li>
+               <li class="flex items-center"><svg class="w-6 h-6 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>2 Brutal Mode Coaching Reports</li>
+               <li class="flex items-center"><svg class="w-6 h-6 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>2 Professional Mode Coaching Reports</li>
+               <li class="flex items-center"><svg class="w-6 h-6 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>A Clear Advantage Over the Dealer Across Town</li>
+            </ul>
+            <a href="https://buy.stripe.com/00w6oGa8ldaoe4nbCRbbG03" target="_blank" rel="noopener noreferrer" class="w-full block accent-gold text-gray-900 font-bold py-4 px-8 rounded-lg shadow-lg hover:accent-gold-darker transition duration-300 transform hover:scale-105 text-lg">
+               Activate Your Cognito Plan
+            </a>
+            <p class="text-sm text-gray-500 mt-4">No long-term contracts. No setup fees. Cancel anytime.</p>
+         </div>
+      </div>
+   </section>
+
+   <!-- Founder's Note Section -->
+   <section class="section-padding bg-white">
+      <div class="container mx-auto max-w-4xl text-center">
+         <img src="https://placehold.co/120x120/333333/ffffff?text=JP" alt="Jason Pulzar, Founder" class="rounded-full mx-auto mb-6 shadow-xl">
+         <h2 class="text-2xl md:text-3xl font-bold mb-4">Built for Dealers, By People Who Get the Business.</h2>
+         <blockquote class="text-lg text-gray-600 italic border-l-4 border-gray-300 pl-6 mx-auto max-w-2xl mb-6">
+            "I’ve spent years in the car business. I built Cognito because I saw too many dealerships losing deals over basic, fixable mistakes on the phone. This isn't a tech solution; it's a performance tool. We give you the kind of honest, actionable feedback you wish you had time to find yourself. We help you win."
+         </blockquote>
+         <p class="font-bold text-gray-900">Jason Pulzar</p>
+         <p class="text-gray-500">Founder, Cognito</p>
+      </div>
+   </section>
+
+   <!-- Footer -->
+   <footer class="bg-gray-900 text-white">
+      <div class="container mx-auto px-6 py-8 text-center">
+         <p class="text-xl font-bold mb-4">COGNITO</p>
+         <div class="flex justify-center space-x-6 mb-4">
+            <a href="#" class="hover:accent-gold-text transition duration-300">Contact Us</a>
+            <a href="#" class="hover:accent-gold-text transition duration-300">FAQ</a>
+            <a href="#" class="hover:accent-gold-text transition duration-300">Privacy Policy</a>
+         </div>
+         <p class="text-gray-500">© 2025 Cognito Performance. All Rights Reserved.</p>
+      </div>
+   </footer>
 
    <script>
-      // --- Form Submission Logic using Fetch for AJAX ---
-      const form = document.getElementById('signup-form');
-      form.addEventListener("submit", handleSignup);
+      // Simple mobile menu toggle
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
 
-      async function handleSignup(event) {
-         event.preventDefault();
+      mobileMenuButton.addEventListener('click', () => {
+         mobileMenu.classList.toggle('hidden');
+      });
 
-         const emailInput = document.getElementById('email');
-         const submitButton = document.getElementById('submit-button');
-         const mainContent = document.getElementById('main-content');
-         const successMessage = document.getElementById('success-message');
-         const submittedEmailSpan = document.getElementById('submitted-email');
-         const errorMessageDiv = document.getElementById('error-message');
-
-         const data = new FormData(event.target);
-
-         submitButton.disabled = true;
-         submitButton.innerHTML = `<svg class="animate-spin h-5 w-5 text-white mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
-         errorMessageDiv.classList.add('hidden');
-
-         try {
-            const response = await fetch(event.target.action, {
-               method: form.method,
-               body: data,
-               headers: {
-                  'Accept': 'application/json'
-               }
-            });
-
-            if (response.ok) {
-               submittedEmailSpan.textContent = emailInput.value;
-               mainContent.classList.add('hidden');
-               successMessage.classList.remove('hidden');
-               form.reset();
-            } else {
-               const errorData = await response.json();
-               const errorText = errorData.errors ? errorData.errors.map(e => e.message).join(', ') : 'An unknown error occurred.';
-               errorMessageDiv.textContent = `Oops! ${errorText}`;
-               errorMessageDiv.classList.remove('hidden');
+      // Close menu when a link is clicked
+      const menuLinks = document.querySelectorAll('#mobile-menu a, .container nav a');
+      menuLinks.forEach(link => {
+         link.addEventListener('click', (e) => {
+            // For nav links, close the mobile menu if it's open
+            if (!mobileMenu.classList.contains('hidden')) {
+               mobileMenu.classList.add('hidden');
             }
-         } catch (error) {
-            errorMessageDiv.textContent = 'Oops! A network error occurred. Please check your connection and try again.';
-            errorMessageDiv.classList.remove('hidden');
-         } finally {
-            submitButton.disabled = false;
-            submitButton.textContent = 'Request My 1 Free Analysis';
-         }
-      }
+         });
+      });
    </script>
 
 </body>
