@@ -98,8 +98,8 @@
             <a href="#dual-coaching" class="hover:accent-gold-text transition duration-300">Coaching Examples</a>
             <a href="#pricing" class="hover:accent-gold-text transition duration-300">Pricing</a>
          </nav>
-         <a href="https://buy.stripe.com/00w6oGa8ldaoe4nbCRbbG03" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block accent-gold text-gray-900 font-bold py-2 px-5 rounded-lg shadow-md hover:accent-gold-darker transition duration-300 transform hover:scale-105">
-            Start Your First 2 Shops
+         <a href="#pricing" class="hidden md:inline-block accent-gold text-gray-900 font-bold py-2 px-5 rounded-lg shadow-md hover:accent-gold-darker transition duration-300 transform hover:scale-105">
+            Schedule a Mystery Shop
          </a>
          <!-- Mobile Menu Button -->
          <button id="mobile-menu-button" class="md:hidden p-2 rounded-md hover:bg-gray-700 transition">
@@ -113,8 +113,8 @@
          <a href="#how-it-works" class="block hover:accent-gold-text transition duration-300">How It Works</a>
          <a href="#dual-coaching" class="block hover:accent-gold-text transition duration-300">Coaching Examples</a>
          <a href="#pricing" class="block hover:accent-gold-text transition duration-300">Pricing</a>
-         <a href="https://buy.stripe.com/00w6oGa8ldaoe4nbCRbbG03" target="_blank" rel="noopener noreferrer" class="block mt-4 w-full text-center accent-gold text-gray-900 font-bold py-3 px-5 rounded-lg shadow-md hover:accent-gold-darker transition duration-300">
-            Start for $249
+         <a href="#pricing" class="block mt-4 w-full text-center accent-gold text-gray-900 font-bold py-3 px-5 rounded-lg shadow-md hover:accent-gold-darker transition duration-300">
+            Schedule a Mystery Shop
          </a>
       </div>
    </header>
@@ -126,8 +126,8 @@
          <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-300 mb-8">
             We mystery shop your team with callers who challenge your reps just like real buyers. You get two distinct coaching reports—Brutal and Professional—to sharpen their competitive edge.
          </p>
-         <a href="https://buy.stripe.com/00w6oGa8ldaoe4nbCRbbG03" target="_blank" rel="noopener noreferrer" class="accent-gold text-gray-900 font-bold py-4 px-8 rounded-lg shadow-xl hover:accent-gold-darker transition duration-300 transform hover:scale-105 text-lg">
-            Start Your First 2 Shops for $249
+         <a href="#pricing" class="accent-gold text-gray-900 font-bold py-4 px-8 rounded-lg shadow-xl hover:accent-gold-darker transition duration-300 transform hover:scale-105 text-lg">
+            Schedule Your First Mystery Shop
          </a>
       </div>
    </section>
@@ -192,7 +192,9 @@
       <div class="container mx-auto">
          <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold mb-3">See the Difference: Coaching in Action</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">One sales call. Two entirely different coaching reports. See how we diagnose performance for every type of salesperson on your team.</p>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+               One sales call. Two entirely different coaching reports. Below are excerpts from our comprehensive 4-page analyses. See how we diagnose performance for every type of salesperson on your team.
+            </p>
          </div>
 
          <div x-data="{ tab: 'brutal' }" class="max-w-6xl mx-auto">
@@ -211,7 +213,7 @@
             <!-- Tab Content -->
             <div>
                <!-- Brutal Mode Content -->
-               <div x-show="tab === 'brutal'" class="report-content bg-gray-800 text-white p-6 sm:p-8 rounded-lg shadow-2xl">
+               <div x-show="tab === 'brutal'" x-cloak class="report-content bg-gray-800 text-white p-6 sm:p-8 rounded-lg shadow-2xl">
                   <h3 class="text-3xl font-bold text-red-400 mb-4">Brutal Mode Report: Dave</h3>
                   <p class="text-gray-300 mb-6">"Listen up, Dave. You just spent 9 minutes on the phone and accomplished nothing. You were polite, you were helpful, and you completely failed to sell a car. You acted like a friendly switchboard operator, not a killer closer."</p>
 
@@ -261,7 +263,7 @@
                </div>
 
                <!-- Professional Mode Content -->
-               <div x-show="tab === 'professional'" class="report-content bg-gray-100 text-gray-800 p-6 sm:p-8 rounded-lg shadow-2xl">
+               <div x-show="tab === 'professional'" x-cloak class="report-content bg-gray-100 text-gray-800 p-6 sm:p-8 rounded-lg shadow-2xl">
                   <h3 class="text-3xl font-bold text-blue-600 mb-4">Professional Mode Report: Dave</h3>
 
                   <h4 class="professional">Performance Development Scorecard</h4>
@@ -323,35 +325,36 @@
 
    <!-- Pricing Section -->
    <section id="pricing" class="section-padding bg-gray-50">
-      <div class="container mx-auto max-w-2xl">
+      <div class="container mx-auto max-w-3xl">
          <div class="bg-white rounded-xl shadow-2xl p-8 md:p-12 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-3">Your Monthly Performance Edge.</h2>
-            <p class="text-lg text-gray-600 mb-6">One simple, high-impact plan. No complexity.</p>
-            <div class="mb-8">
-               <span class="text-5xl font-extrabold">$249</span>
-               <span class="text-lg text-gray-500">/month</span>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
+            <p class="text-lg text-gray-600 mb-8">One plan. High-impact results. No hidden fees.</p>
+
+            <!-- New Pricing Box -->
+            <div class="mb-6 bg-gray-100 p-6 rounded-lg">
+               <p class="text-5xl font-extrabold text-gray-900">$397<span class="text-2xl font-medium text-gray-500">/month</span></p>
+               <p class="text-lg font-semibold text-gray-700 mt-2">Per Location - First 5 Reps Included</p>
             </div>
-            <ul class="space-y-4 text-left mb-10 inline-block">
-               <li class="flex items-center"><svg class="w-6 h-6 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>2 Strategic Mystery Shops</li>
-               <li class="flex items-center"><svg class="w-6 h-6 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>2 Brutal Mode Coaching Reports</li>
-               <li class="flex items-center"><svg class="w-6 h-6 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>2 Professional Mode Coaching Reports</li>
-               <li class="flex items-center"><svg class="w-6 h-6 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>A Clear Advantage Over the Dealer Across Town</li>
-            </ul>
+
+            <!-- Money-Back Guarantee -->
+            <div class="mb-8">
+               <p class="font-bold text-lg text-green-600">30-Day Money-Back Guarantee</p>
+               <p class="text-gray-600 max-w-md mx-auto mt-1">If you don't see actionable insights that improve your team's performance, we'll refund every penny.</p>
+            </div>
+
+            <!-- Updated CTA -->
             <a href="https://buy.stripe.com/00w6oGa8ldaoe4nbCRbbG03" target="_blank" rel="noopener noreferrer" class="w-full block accent-gold text-gray-900 font-bold py-4 px-8 rounded-lg shadow-lg hover:accent-gold-darker transition duration-300 transform hover:scale-105 text-lg">
-               Activate Your Cognito Plan
+               Schedule Your First Mystery Shop - Results in 48 Hours
             </a>
-            <p class="text-sm text-gray-500 mt-4">No long-term contracts. No setup fees. Cancel anytime.</p>
+
+            <!-- Email -->
+            <p class="mt-6 text-xl font-semibold text-gray-800">
+               Or Email Us: <a href="mailto:JasonPulzar@gmail.com" class="accent-gold-text hover:underline">JasonPulzar@gmail.com</a>
+            </p>
          </div>
       </div>
    </section>
+
 
    <!-- Founder's Note Section -->
    <section class="section-padding bg-white">
